@@ -73,6 +73,7 @@ module.exports = function (grunt) {
     //初始化grunt配置
     grunt.initConfig(initCfg);
 
+    
     /**
      *  注册默认任务(任务调用简写方式)，根据参数调用相关的构建模式任务，默认调用其构建模式的调试模式。
      *  运行 grunt 调用 'production-debug' 任务，
@@ -99,7 +100,7 @@ module.exports = function (grunt) {
     *  5、解析sass --> 调试目录
     *  6、剩余未操作文件复制 --> 调试目录
     * */
-    grunt.registerTask('production', ['clean', 'concat', 'string-replace', 'sass', 'copy']);
+    grunt.registerTask('production', ['clean', 'string-replace', 'sass' , 'copy' , 'browserify']);
 
     /**
      * 开发模式调试任务，通过运行 grunt 或 grunt production-debug 命令调用。构建流程：
