@@ -1,14 +1,14 @@
 {
-  "name": "osagames",
+  "name": "common package",
   "version": "0.1.0",
-  "description": "香港绿洲",
+  "description": "个人模板",
   "repository": {
      "type": "git",
-     "url": "https://github.com/guopengfei1992/mdata.git"
+     "url": "https://github.com/gaoshiyong1272/common.git"
   },
   "license": "BSD-3-Clause",
   "projectCfg": {
-    "taskCfgPath": "grunt_task_cfg",
+    "taskCfgPath": "grunt_task_cfg", 
     "src": "source",
     "prdDest": "debug",
     "depDest": "production"
