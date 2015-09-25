@@ -9,7 +9,7 @@ exports.common = {
     expand: true,
     flatten: false,
     cwd: gruntProject.src,
-    src: ['*/tpl/**/*.html', '*/js/*.*', '*/css/*.css', '*/img/*.*', '*/ui_guide/**/*', '*/media/**/*'],
+    src: ['*/tpl/**/*.html', '*/scripts/*.*', '*/css/*.css', '*/images/*.*', '*/ui_guide/**/*', '*/media/**/*'],
     dest: gruntProject.prd
 };
 
@@ -23,7 +23,7 @@ if(!gruntProject.debug){
         expand: true,
         flatten: false,
         cwd: gruntProject.prd,
-        src: ['*/tpl/**/*.html', '*/img/*.*', '!*/img/*.{png,jpg,jpeg}', '*/media/**/*'],
+        src: ['*/tpl/**/*.html', '*/images/*.*', '!*/images/*.{png,jpg,jpeg}', '*/media/**/*'],
         dest: gruntProject.dest
     };
 }

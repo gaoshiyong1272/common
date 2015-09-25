@@ -11,7 +11,7 @@ if(!gruntProject.debug) {
     exports.deploy = {
         expand: true,
         cwd: gruntProject.prd,
-        src: ['*/js/*.js'],
+        src: ['*/scripts/*.js'],
         dest: gruntProject.dest
     };
 /*
@@ -21,7 +21,7 @@ if(!gruntProject.debug) {
     exports.common = {
         expand: true,
         cwd: gruntProject.prd,
-        src: ['common/js/*.js'],
+        src: ['common/scripts/*.js'],
         dest: gruntProject.dest
     };
 }

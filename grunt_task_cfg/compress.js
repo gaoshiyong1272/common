@@ -15,7 +15,7 @@ if (isOpenCompress) {
     exports.compress = {
         expand : true,
         cwd : gruntProject.dest,
-        src : ['**/*.*','!*/img/*.*'],
+        src : ['**/*.*','!*/images/*.*'],
         dest : 'compress_gzip/'
     };
 }else {

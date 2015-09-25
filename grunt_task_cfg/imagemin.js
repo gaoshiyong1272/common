@@ -10,7 +10,7 @@ if(!gruntProject.debug) {
         files: [{
             expand: true,
             cwd: gruntProject.prd,
-            src: '*/img/*.{png,jpg,gif}',
+            src: '*/images/*.{png,jpg,gif}',
             dest: gruntProject.dest
         }]
     };

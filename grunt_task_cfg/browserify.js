@@ -5,7 +5,7 @@
  * */
 exports.options = {
     alias : {
-        'main': gruntProject.src + '/common/js/main.js'
+        'main': gruntProject.src + '/common/scripts/main.js'
     }
 };
 
@@ -18,7 +18,7 @@ exports.all = {
         {
             expand: true,
             cwd: gruntProject.src,
-            src: ['*/js/*.js'],
+            src: ['*/scripts/*.js'],
             dest: gruntProject.prd
         }
     ]
