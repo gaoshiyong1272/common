@@ -1,0 +1,17 @@
+
+/**
+ * inline 元素兼容ie6以上的版本
+ */
+@function inlinePadding ($options) {
+	$top : map-get($options, top);
+	$right : map-get($options, right);
+	$bottom : map-get($options, bottom);
+	$left : map-get($options, left);	
+
+	//设置初值
+	@if(not $top) { $top:0; }
+	@if(not $right) { $right:0; }
+	@if(not $bottom) { $bottom:12px; }
+	@if(not $left) { $left:null; }
+}
+
