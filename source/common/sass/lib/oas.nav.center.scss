@@ -1,0 +1,19 @@
+@import "../mixin/oas.nav.center";
+
+@include oas-nav((
+	name : left,
+	fontsize : 12px,
+	dir : left
+));
+
+@include oas-nav((
+	name : right,
+	fontsize : 12px,
+	dir : right
+));
+
+@include oas-nav((
+	name : center,
+	fontsize : 12px,
+	dir : center
+));

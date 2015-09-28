@@ -1,0 +1,6 @@
+
+//内联元素转化为介入内敛与块集元素之间，可以控制高与宽
+@mixin display(){
+	display:inline-block;
+	vertical-align:top;
+}

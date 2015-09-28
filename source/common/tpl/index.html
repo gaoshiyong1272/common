@@ -7,35 +7,49 @@
 <meta name="description" content="">
 <meta name="keywords" content="">
 <style type="text/css">
-.oas-btn-box { width: 1000px; margin: 0 auto; padding:20px 0;}
-/*a.cxg-btn-gray,a.cxg-btn-gray span,a.cxg-btn-orange,a.cxg-btn-green span,a.cxg-btn-green,a.cxg-btn-orange span,a.cxg-btn-blue,a.cxg-btn-blue span,a.cxg-btn-orange-nobg,a.cxg-btn-orange-nobg span { display:inline-block; vertical-align:top;  border-radius:8px;}
-a.cxg-btn-gray span,a.cxg-btn-orange span,a.cxg-btn-green span,a.cxg-btn-blue span,a.cxg-btn-orange-nobg span {border: 2px solid #1f2a07; height:1.25em; line-height:1.25em; padding: 0.7em 1.5em 0.8em; box-shadow: inset 0px -3px 0px rgba(0,0,0,0.2)}
-a.cxg-btn-gray em,a.cxg-btn-orange em,a.cxg-btn-green em,a.cxg-btn-blue em,a.cxg-btn-orange-nobg em  { font-size:1em; display:inline-block; font-size:1em; line-height:1.3em; cursor:pointer; vertical-align:top; font-weight: bold;  }
-a.cxg-btn-3em span { padding:0.5em 4em;}
-
-a.cxg-btn-gray { background-color:#e4e4e4; color:#666; }
-a.cxg-btn-gray:hover { background-color:#f3f3f3; color:#000; }
-a.cxg-btn-gray:active { background-color:#d6d6d6; color:#000; }
-
-a.cxg-btn-orange { background-color:#fdb44e; color:#fff; }
-a.cxg-btn-orange:hover { background-color:#de9e44; }
-a.cxg-btn-orange:active { background-color:#de9e44; }
-
-a.cxg-btn-green { background-color:#82ce05; color:#fff; }
-a.cxg-btn-green:hover { background-color:#8fe205; }
-a.cxg-btn-green:active { background-color:#82ce05; }
-
-a.cxg-btn-blue { background-color:#69759c; color:#fff; }
-a.cxg-btn-blue:hover { background-color:#69759c; }
-a.cxg-btn-blue:active { background-color:#69759c; } */
+.oas-content-box { width: 1000px; margin: 0 auto; padding:20px 0;}
+.oas-content-box h4 { padding-bottom: 15px;}
+.oas-naviLine-left a,.oas-naviLine-center a,.oas-naviLine-right a { line-height: 20px; height: 20px; padding: 0 15px; background: #ccc;}
 </style>
 <link href="../sass/index.css" rel="stylesheet">
 </head>
 <body>
-<div class="oas-btn-box">
-<a class="oas-btn-gray" href=""><span><em>gray</em></span></a>	
-<a class="oas-btn-orange" href=""><span><em>orange</em></span></a>		
+<!--btn-->
+<div class="oas-content-box">
+	<h4>1、按钮样式</h4>
+	<div class="oas-content-wrap">
+		<a class="oas-btn-gray" href=""><span><em>gray</em></span></a>	
+		<a class="oas-btn-orange" href=""><span><em>orange</em></span></a>	
+	</div>
 </div>
+<!--btn-->
+<!--导航内容居中显示-->
+<div class="oas-content-box">
+	<h4>1、导航内容居中显示（去掉某些浏览器里面产生2像素缝隙）</h4>
+	<div class="oas-content-wrap oas-naviLine-left">
+		<a href="">首页</a>
+		<span>|</span>
+		<a href="">案例</a>
+		<span>|</span>
+		<a href="">联系我们</a>
+	</div>
+	<div class="oas-content-wrap oas-naviLine-center">
+		<a href="">首页</a>
+		<span>|</span>
+		<a href="">案例</a>
+		<span>|</span>
+		<a href="">联系我们</a>
+	</div>
+	<div class="oas-content-wrap oas-naviLine-right">
+		<a href="">首页</a>
+		<span>|</span>
+		<a href="">案例</a>
+		<span>|</span>
+		<a href="">联系我们</a>
+	</div>
+
+</div>
+<!--导航内容居中显示-->
 <script type="text/javascript" src="../scripts/main.js"></script>  
 </body>
 </html>

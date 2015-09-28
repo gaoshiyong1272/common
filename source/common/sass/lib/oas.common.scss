@@ -1,9 +1,6 @@
 @import "./oas.config";
 
-/**
- * 设置公共样式表
- */
-
+//设置公共样式表
 html { height:100%;}
 body { margin:0; font:normal #{$fontS}/#{$fontL} $fontF; color:$fontC; }
 p,li,ul,ol,h1,h2,h3,h4,h5,h6,dl,dd,dt,img,a,div,td { margin:0px; padding:0px; border:0px; word-wrap:break-word; word-break:normal; list-style:none; }
@@ -25,8 +22,8 @@ a.subLink:hover { color:$sublinkHover}
 .centerL { text-align:left;}
 .centerR { text-align:right;}
 .clear { clear:both; height:0; overflow:hidden; visibility:hidden;}
-.fL { float:left!important ;_display:inline;}
-.fR { float:right!important ;_display:inline;}
+.fL { float:left!important ; _display:inline;}
+.fR { float:right!important ; _display:inline;}
 .fB { font-weight:bold;}
 .fn14 { font-size:(2 + $fontS)!important;}
 .fn16 { font-size:(4 + $fontS)!important;}
@@ -40,4 +37,4 @@ a.subLink:hover { color:$sublinkHover}
 .mar_t15 { margin-top:(3 + $fontS)!important;}
 .mar_t10 { margin-top:(-2 + $fontS)!important;}
 .pad_l0 { padding-left:0!important;}
-.cxg-indent { text-indent:2*$fontS;}
+.oas-indent { text-indent:2*$fontS;}

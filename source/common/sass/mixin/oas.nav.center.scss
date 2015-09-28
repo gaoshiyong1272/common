@@ -1,0 +1,32 @@
+@import "../lib/oas.config";
+@import "./oas.display";
+
+
+//只针对inline元素导航内容居中显示（去掉某些浏览器里面产生2像素缝隙）
+@mixin oas-nav($options){
+	$name : map-get($options, name);
+	$fontsize : map-get($options, fontsize);
+	$dir : map-get($options, dir);
+
+	//设置初值
+	@if(not $fontsize) { $fontsize:$fontS; }
+	@if(not $dir) { $dir:left; }
+
+	@if($name) {
+		.oas-naviLine-#{ $name } {
+			display : block;
+			font-size : 0;
+			text-align: $dir;
+			
+			* {
+				@include display();
+				font-size : $fontsize;	
+			}
+
+		}	
+	}
+}
+
+
+
+
