@@ -1,0 +1,17 @@
+@import "../mixin/oas.btn";
+
+@include oas-btn((
+	name : gray,
+	backgroundhover : #f3f3f3,
+	colorhover : #000,
+	backgroundactive : #d6d6d6,
+	coloractive : #000,
+));
+
+@include oas-btn((
+	name : orange,
+	background : #fdb44e,
+	color : #fff,
+	backgroundhover : #de9e44,
+	backgroundactive : #de9e44,
+));

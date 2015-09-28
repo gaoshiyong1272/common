@@ -1,0 +1,97 @@
+/**
+ * btn 样式
+ */
+
+@mixin display(){
+	display:inline-block;
+	vertical-align:top;
+}
+
+
+@mixin oas-btn($options){
+	$name : map-get($options, name);
+	$radius : map-get($options, radius);
+	$border : map-get($options, border);
+	$fontsize : map-get($options, fontsize);
+	$boxShadow : map-get($options, boxshadow);
+	$cursor : map-get($options, cursor);
+	$weight : map-get($options, weight);
+	$background : map-get($options, background);
+	$color : map-get($options, color);
+	$backgroundhover : map-get($options, backgroundhover);
+	$colorhover : map-get($options, colorhover);
+	$backgroundactive : map-get($options, backgroundactive);
+	$coloractive : map-get($options, coloractive);
+
+	//设置初值
+	@if(not $radius) { $radius:8px; }
+	@if(not $border) { $border:0; }
+	@if(not $fontsize) { $fontsize:12px; }
+	@if(not $boxShadow) { $boxShadow:null; }
+	@if(not $cursor) { $cursor:cursor; }
+	@if(not $weight) { $weight:bold; }
+	@if(not $background) { $background:#e4e4e4; }
+	@if(not $color) { $color:#666; }
+	@if(not $backgroundhover) { $backgroundhover:null; }
+	@if(not $colorhover) { $colorhover:null; }
+	@if(not $backgroundactive) { $backgroundactive:null; }
+	@if(not $coloractive) { $coloractive:null; }
+
+	@if($name) {
+		a.oas-btn-#{$name}{
+			@include display();
+			border-radius : $radius;
+			font-size : $fontsize;
+			background : $background;
+			color : $color;
+
+			//公共样式
+			* {
+				@include display();
+				font-size : $fontsize;
+				cursor:$cursor;
+			}
+
+			//控制span样式
+			span {
+				height : 1.25*$fontsize;
+				line-height : 1.25*$fontsize;
+				border-radius : $radius;
+				border: $border;
+				padding : 0.7*$fontsize 1.5*$fontsize 0.8*$fontsize;
+				box-shadow: $boxShadow;
+			}
+
+			//控制em样式
+			em {
+				font-weight: $weight;
+				height : 1.25*$fontsize;
+				line-height : 1.25*$fontsize;
+			}
+		}
+
+		//设置鼠标滑过事件
+		@if($backgroundhover or $colorhover){
+			a.oas-btn-#{$name}:hover {
+				background : $backgroundhover;
+				color : $colorhover;	
+			}
+		}
+
+		//设置鼠标按下事件
+		@if($backgroundactive or $coloractive){
+			a.oas-btn-#{$name}:active {
+				background : $backgroundactive;
+				color : $coloractive;	
+			}		
+		}
+	}
+}
+
+
+
+
+
+
+
+

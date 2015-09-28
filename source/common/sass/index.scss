@@ -1,3 +1,23 @@
-﻿/*加载jQuery UI*/
-@import "./lib/jquery.ui.min";
+﻿/**
+ * 加载common样式
+ */
+@import "./lib/oas.common";
+
+
+/**
+ * 加载ico图片样式
+ */
+@import "./lib/oas.ico";
+
+
+
+/**
+ * 加载btn样式
+ */
+@import "./lib/oas.btn";
+
+
+
+/*加载jQuery UI*/
+@import "./lib/oas.jquery.ui";
 
