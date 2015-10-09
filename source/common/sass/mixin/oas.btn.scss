@@ -22,7 +22,7 @@
 	$coloractive : map-get($options, coloractive);
 
 	//设置初值
-	@if(not $radius) { $radius:8px; }
+	@if(not $radius) { $radius:4px; }
 	@if(not $border) { $border:0; }
 	@if(not $fontsize) { $fontsize:12px; }
 	@if(not $boxShadow) { $boxShadow:null; }
@@ -56,7 +56,7 @@
 				line-height : 1.25*$fontsize;
 				border-radius : $radius;
 				border: $border;
-				padding : 0.7*$fontsize 1.5*$fontsize 0.8*$fontsize;
+				padding : 0.4*$fontsize 1.5*$fontsize 0.5*$fontsize;
 				box-shadow: $boxShadow;
 			}
 

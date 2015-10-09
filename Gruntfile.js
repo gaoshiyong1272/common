@@ -91,6 +91,11 @@ module.exports = function (grunt) {
         }
     });
 
+    /*grunt.registerTask('tpl', function () {
+        require('./lib/tpl')();
+    });
+    */
+
     /*
     *  开发模式任务，通过运行 grunt production 命令调用。构建流程：
     *  1、清楚调试代码目录
@@ -100,7 +105,7 @@ module.exports = function (grunt) {
     *  5、解析sass --> 调试目录
     *  6、剩余未操作文件复制 --> 调试目录
     * */
-    grunt.registerTask('production', ['clean', 'string-replace', 'sass' , 'copy' , 'browserify']);
+    grunt.registerTask('production', ['clean','sass' , 'copy' , 'string-replace', 'browserify']);
 
     /**
      * 开发模式调试任务，通过运行 grunt 或 grunt production-debug 命令调用。构建流程：
