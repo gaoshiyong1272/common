@@ -3,6 +3,143 @@
 //创建命名空间
 var oasgames = {}
 
+/**
+ * 创建工具类对象
+ */
+oasgames.util = {};
+
+/**
+ * [oasgames.util.getUrl description] 获取url地址或者指定字符串中参数,只获取链接地址中的第一次出现的key的值作为返回值
+ * @param  {[string]} key  [description] 键值名称
+ * @param  {[string]} str [description]
+ * @return {[type]}      [description]
+ */
+oasgames.util.getUrl =  function(key , str) {
+	var val = null;
+	var tempStr = str == undefined ? window.location.search.substring(1) : str.split('?')[1];
+	if(tempStr.length != 0){
+		var arr = tempStr.split('&');
+		var len = arr.length;
+		for(i=0 ; i < len ; i++){
+			if(arr[i].split('=')[0] == key){
+				val = arr[i].split('=')[1];
+				break;
+			}
+		}
+	}
+	return val;
+};
+
+/**
+ * [oasgames.util.tab description] tab切换类操作
+ * @param  {[string]} opt.eType   [description] 事件类型 hover 和 click  默认 click
+ * @param  {[object]} opt.tabEleParent  [description] 	切换元素对象 
+ * @param  {[object]} opt.contEleParent [description]   被切换元素对象
+ * @param  {[string]} opt.css [description]   			切换当前元素样式
+ * @param  {[type]} opt.callback [description]   		切换后回调方法
+ * @param  {[type]} opt.stop [description]   			取消冒泡事件
+ * @param  {[type]} opt.actStop [description]   		当前元素是否能启动连接操作
+ */
+oasgames.util.tab = function(options){
+	var defin = {
+		eType : 'click',
+		tabEleParent : null,
+		contEleParent : null,
+		css : 'active',
+		callback : null,
+		stop : true,
+		actStop : true
+	}
+	var opt = $.extend({} , defin , options ? options : {});
+	if(opt.eType != 'click' && opt.eType != 'hover' ) return;
+	opt.tabEleParent.children()[opt.eType](function(e){
+		if(opt.actStop && $(this).hasClass(opt.css)) return false;
+		var index = $(this).index();
+		$(this).addClass(opt.css).siblings().removeClass(opt.css);
+		opt.contEleParent.children().eq(index).show().siblings().hide();
+		if(typeof opt.callback == 'function' ) opt.callback(opt,$(this),opt.contEleParent.children().eq(index),opt.contEleParent.children().eq(index));
+		if(opt.stop){
+			e.stopPropagation();
+			return false;	
+		}
+	});	
+};
+
+
+/**
+ * [oasgames.util.getEleData description] 解析元素属性特定字符串，并转换为特定对象格式返回
+ * @param  {[object]} element [description]  元素对象
+ * @param  {[string]} attr    [description]	 元素属性名称
+ * @return {[object]}         [description]  返回json格式
+ */
+oasgames.util.getEleData = function(element,attr){
+	var json = {} , temp = [] , len , klen;
+	var str = $(element).attr( attr ? attr : 'data-post');
+	if(!str) return {};
+	temp = str.split('&');
+	len = temp.length;
+	for(var i = 0; i < len ; i++){
+		var a = temp[i].split('=');
+		if(a.length > 2){
+			var key = a[0];
+			var arr = a.slice(1);
+			var val = arr.join('=');
+		}else{
+			var key = a[0];
+			var val = a[1];
+		}
+		json[key] = val;
+	}
+	return json;
+};
+
+
+
+/**
+ * [oasgames.util.getEleInfo description] 获取元素对象高，宽，坐标值,没有找对元素节点对象返回null
+ * @param  {[object]} element 	[description] 	元素节点
+ * @param  {[boolean]} outType 	[description] 	高度是否包含元素padding、margin、border
+ * @return {[type]}         [description] 		返回json格式对象，包括（高，宽，坐标值信息）假如是window,返回滚动条高度
+ */
+oasgames.util.getEleInfo = function(element,outType){
+	outType = outType == undefined ? false :  outType;
+	var json = {};
+	if(element === undefined) element = $(window); 
+	if($(element).length == 0) return {};
+	if(element.get(0) == window){
+		json.h = $(element).height();
+		json.w = $(element).width();
+		json.st = $(element).scrollTop();
+		json.sl = $(element).scrollLeft();
+	}else{
+		if(outType) {
+			json.h = $(element).outerHeight();
+			json.w = $(element).outerWidth();
+		}else{
+			json.h = $(element).height();
+			json.w = $(element).width();	
+		}
+	}
+	if(element.get(0) == window) return json;
+	json.t = Math.floor($(element).offset().top);
+	json.l = Math.floor($(element).offset().left);
+	return json;
+};
+
+
+/**
+ * [oasgames.util.rando description] 生成随机数
+ * @param  {[number]} min [description] 生成最小数字
+ * @param  {[number]} max [description] 生成最大数字
+ * @return {[number]}     [description] 返回随机数
+ */
+oasgames.util.random = function(min, max){
+	var Range = max - min;
+    var Rand = Math.random();
+    return(min + Math.round(Rand * Range));
+};
+
+
 
 //加载underscore组件
 oasgames._ = require('../lib/underscore-min.js');
@@ -207,6 +344,38 @@ oasgames.string.deEncode = function(str,type){
 	};
 	return newStr;
 };
+
+
+oasgames.change = {};
+oasgames.change.time = 200;   
+	
+//存储窗口滚动事件处理方法
+oasgames.change.scrollCode = {};
+oasgames.change.scrollTimeer = null;  
+$(window).scroll(function(e){
+	if(oasgames.change.scrollTimeer) clearTimeout(oasgames.change.scrollTimeer);
+	oasgames.change.scrollTimeer = setTimeout(function(){
+		for( var key in oasgames.change.scrollCode){
+			if(typeof oasgames.change.scrollCode[key] == 'function') {
+				oasgames.change.scrollCode[key]();
+			}
+		}
+	},oasgames.change.time);
+});
+
+//存储窗口大小改变事件处理方法
+oasgames.change.resizeCode = {};
+oasgames.change.resizeTimeer = null;
+$(window).resize(function(e){
+	if(oasgames.change.resizeTimeer) clearTimeout(oasgames.change.resizeTimeer);
+	oasgames.change.resizeTimeer = setTimeout(function(){
+		for( var key in oasgames.change.resizeCode){
+			if(typeof oasgames.change.resizeCode[key] == 'function') {
+				oasgames.change.resizeCode[key]();
+			}
+		}
+	},oasgames.change.time);
+});
 
 
 
